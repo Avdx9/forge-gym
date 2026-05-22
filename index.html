@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>LUXE — Premium Salon & Barbershop</title>
+  <meta name="description" content="London's most refined salon and barbershop experience. Expert cuts, colour, beard sculpting and luxury treatments. Book online today." />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garant:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+  <!-- ── PRELOADER ───────────────────────────────────────────────── -->
+  <div id="preloader">
+    <div class="pre-ring-wrap">
+      <svg class="pre-ring" viewBox="0 0 120 120">
+        <circle class="pre-ring__bg"   cx="60" cy="60" r="52"/>
+        <circle class="pre-ring__fill" cx="60" cy="60" r="52" id="ring-fill"/>
+      </svg>
+      <div class="pre-counter">
+        <span id="pre-num">0</span><span class="pre-pct">%</span>
+      </div>
+    </div>
+    <p class="pre-label">Preparing your experience</p>
+  </div>
+
+  <!-- ── CURSOR ─────────────────────────────────────────────────── -->
+  <div id="cursor"></div>
+  <div id="cursor-follower"></div>
+
+  <!-- ── HEADER ─────────────────────────────────────────────────── -->
+  <header id="header">
+    <a class="logo" href="#">LUXE<span>.</span></a>
+    <nav class="nav">
+      <a href="#services" class="nav__link">Services</a>
+      <a href="#about"    class="nav__link">About</a>
+      <a href="#gallery"  class="nav__link">Gallery</a>
+    </nav>
+    <a href="#booking" class="btn-book">Book Now</a>
+    <button class="nav-toggle" aria-label="Menu">
+      <span></span><span></span>
+    </button>
+  </header>
+
+  <!-- ── CANVAS (Three.js lives here) ──────────────────────────── -->
+  <canvas id="webgl-canvas"></canvas>
+
+  <!-- ── MAIN SCROLL WRAPPER ────────────────────────────────────── -->
+  <div id="scroll-wrapper">
+
+    <!-- §1 HERO ─────────────────────────────────────────────────── -->
+    <section id="hero" class="section">
+      <div class="hero__content">
+        <p class="eyebrow reveal-line">London's Premier Studio</p>
+        <h1 class="hero__title">
+          <span class="hero__word" data-word="ELEVATE">ELEVATE</span>
+          <em class="hero__word hero__word--italic" data-word="YOUR">YOUR</em>
+          <span class="hero__word hero__word--outline" data-word="LOOK">LOOK</span>
+        </h1>
+        <p class="hero__sub reveal-line">
+          Precision craft. Timeless style.<br/>Each visit, a transformation.
+        </p>
+        <div class="hero__cta">
+          <a href="#booking" class="btn-primary magnetic">Begin Your Transformation</a>
+          <a href="#services" class="btn-ghost magnetic">View Services</a>
+        </div>
+      </div>
+      <div class="hero__scroll-hint">
+        <div class="scroll-line-anim"></div>
+        <span>Scroll</span>
+      </div>
+      <!-- Floating stat chips -->
+      <div class="hero__chips">
+        <div class="chip chip--1 reveal-chip"><span class="chip__num">12+</span><span class="chip__label">Years of craft</span></div>
+        <div class="chip chip--2 reveal-chip"><span class="chip__num">4.9</span><span class="chip__label">Google rating</span></div>
+        <div class="chip chip--3 reveal-chip"><span class="chip__num">3k+</span><span class="chip__label">Happy clients</span></div>
+      </div>
+    </section>
+
+    <!-- §2 SERVICES ─────────────────────────────────────────────── -->
+    <section id="services" class="section section--services">
+      <div class="section__inner">
+        <div class="section__header">
+          <span class="section__label">01 — OUR CRAFT</span>
+          <h2 class="section__title">Services built<br/><em>for excellence</em></h2>
+        </div>
+        <div class="services-grid">
+          <div class="svc-card" data-idx="0">
+            <div class="svc-card__num">01</div>
+            <div class="svc-card__body">
+              <h3>Precision Cut</h3>
+              <p>Expert scissor and clipper work sculpted to your face shape, hair type, and lifestyle.</p>
+            </div>
+            <div class="svc-card__foot">
+              <span class="svc-price">From £45</span>
+              <span class="svc-duration">45 min</span>
+            </div>
+          </div>
+          <div class="svc-card" data-idx="1">
+            <div class="svc-card__num">02</div>
+            <div class="svc-card__body">
+              <h3>Colour & Balayage</h3>
+              <p>From natural sun-kissed highlights to bold, head-turning colour — seamlessly blended.</p>
+            </div>
+            <div class="svc-card__foot">
+              <span class="svc-price">From £85</span>
+              <span class="svc-duration">90 min</span>
+            </div>
+          </div>
+          <div class="svc-card svc-card--featured" data-idx="2">
+            <div class="svc-card__badge">Most Popular</div>
+            <div class="svc-card__num">03</div>
+            <div class="svc-card__body">
+              <h3>Beard Sculpt</h3>
+              <p>Traditional straight-razor finish with hot towel ritual and premium grooming oils.</p>
+            </div>
+            <div class="svc-card__foot">
+              <span class="svc-price">From £25</span>
+              <span class="svc-duration">30 min</span>
+            </div>
+          </div>
+          <div class="svc-card" data-idx="3">
+            <div class="svc-card__num">04</div>
+            <div class="svc-card__body">
+              <h3>Scalp Treatment</h3>
+              <p>Revitalising treatments targeting growth, hydration, and luminous, healthy hair.</p>
+            </div>
+            <div class="svc-card__foot">
+              <span class="svc-price">From £55</span>
+              <span class="svc-duration">60 min</span>
+            </div>
+          </div>
+          <div class="svc-card" data-idx="4">
+            <div class="svc-card__num">05</div>
+            <div class="svc-card__body">
+              <h3>Styling & Blowout</h3>
+              <p>Professional finish that holds — sleek, textured, or maximally voluminous.</p>
+            </div>
+            <div class="svc-card__foot">
+              <span class="svc-price">From £35</span>
+              <span class="svc-duration">45 min</span>
+            </div>
+          </div>
+          <div class="svc-card svc-card--vip" data-idx="5">
+            <div class="svc-card__num">06</div>
+            <div class="svc-card__body">
+              <h3>VIP Experience</h3>
+              <p>Full treatment package: cut, colour consultation, beard, hot towel, champagne, and priority scheduling.</p>
+            </div>
+            <div class="svc-card__foot">
+              <span class="svc-price">From £120</span>
+              <span class="svc-duration">2 hrs</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- §3 ABOUT ─────────────────────────────────────────────────── -->
+    <section id="about" class="section section--about">
+      <div class="section__inner about__inner">
+        <div class="about__text">
+          <span class="section__label">02 — OUR STORY</span>
+          <h2 class="section__title">The art of<br/><em>excellence</em></h2>
+          <p class="about__para">Every cut tells a story. Every colour change marks a new chapter. We combine decades of craft with the most refined modern techniques to deliver an experience that goes far beyond a haircut.</p>
+          <p class="about__para">Our stylists are artists. Our studio is your sanctuary. From the moment you walk in, every detail is curated for your comfort and transformation.</p>
+          <div class="about__stats">
+            <div class="stat">
+              <span class="stat__n" data-target="12">0</span><span class="stat__suf">+</span>
+              <span class="stat__label">Years of craft</span>
+            </div>
+            <div class="stat">
+              <span class="stat__n" data-target="3000">0</span><span class="stat__suf">+</span>
+              <span class="stat__label">Satisfied clients</span>
+            </div>
+            <div class="stat">
+              <span class="stat__n" data-target="8">0</span>
+              <span class="stat__label">Expert stylists</span>
+            </div>
+          </div>
+        </div>
+        <div class="about__visual">
+          <div class="about__img-frame">
+            <div class="about__img-placeholder">
+              <div class="about__img-lines"></div>
+              <span>Studio Photography</span>
+            </div>
+          </div>
+          <div class="about__badge">
+            <span class="badge__top">Est.</span>
+            <span class="badge__year">2013</span>
+            <span class="badge__city">London</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- §4 PROCESS ──────────────────────────────────────────────── -->
+    <section id="process" class="section section--process">
+      <div class="section__inner">
+        <span class="section__label">03 — THE JOURNEY</span>
+        <h2 class="section__title">Four steps to<br/><em>extraordinary</em></h2>
+        <div class="process-track">
+          <div class="process-step">
+            <div class="ps__num">01</div>
+            <div class="ps__line"></div>
+            <h3 class="ps__title">Book Online</h3>
+            <p class="ps__desc">Choose your service, pick your stylist, lock in your time. Done in under 60 seconds from any device.</p>
+          </div>
+          <div class="process-step">
+            <div class="ps__num">02</div>
+            <div class="ps__line"></div>
+            <h3 class="ps__title">Consultation</h3>
+            <p class="ps__desc">Your stylist dedicates time to your vision — understanding your hair, your life, and exactly what transformation you're after.</p>
+          </div>
+          <div class="process-step">
+            <div class="ps__num">03</div>
+            <div class="ps__line"></div>
+            <h3 class="ps__title">The Transformation</h3>
+            <p class="ps__desc">Sit back with a drink. Our artists work their craft while you decompress in our bespoke studio environment.</p>
+          </div>
+          <div class="process-step">
+            <div class="ps__num">04</div>
+            <div class="ps__line"></div>
+            <h3 class="ps__title">The Reveal</h3>
+            <p class="ps__desc">Leave looking and feeling extraordinary. We'll share personalised aftercare advice to keep your style looking perfect.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- §5 GALLERY ──────────────────────────────────────────────── -->
+    <section id="gallery" class="section section--gallery">
+      <div class="section__inner">
+        <span class="section__label">04 — OUR WORK</span>
+        <h2 class="section__title">The <em>portfolio</em></h2>
+      </div>
+      <div class="gallery-marquee-wrap">
+        <div class="gallery-track" id="gallery-track">
+          <div class="g-card"><div class="g-card__inner g-c1"><span>Precision Cut</span></div></div>
+          <div class="g-card"><div class="g-card__inner g-c2"><span>Balayage Colour</span></div></div>
+          <div class="g-card"><div class="g-card__inner g-c3"><span>Beard Sculpt</span></div></div>
+          <div class="g-card"><div class="g-card__inner g-c4"><span>Scalp Treatment</span></div></div>
+          <div class="g-card"><div class="g-card__inner g-c5"><span>Blowout Styling</span></div></div>
+          <div class="g-card"><div class="g-card__inner g-c6"><span>VIP Package</span></div></div>
+          <!-- duplicate for seamless loop -->
+          <div class="g-card" aria-hidden="true"><div class="g-card__inner g-c1"><span>Precision Cut</span></div></div>
+          <div class="g-card" aria-hidden="true"><div class="g-card__inner g-c2"><span>Balayage Colour</span></div></div>
+          <div class="g-card" aria-hidden="true"><div class="g-card__inner g-c3"><span>Beard Sculpt</span></div></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- §6 TESTIMONIALS ─────────────────────────────────────────── -->
+    <section id="testimonials" class="section section--testimonials">
+      <div class="section__inner">
+        <span class="section__label">05 — REVIEWS</span>
+        <h2 class="section__title">What clients <em>say</em></h2>
+        <div class="testi-grid">
+          <div class="testi-card">
+            <div class="testi-stars">★★★★★</div>
+            <blockquote>"Absolutely transformed my look. The attention to detail is unreal — I've never felt so confident walking out of a salon. Worth every penny."</blockquote>
+            <cite>— Sarah M., Kensington</cite>
+          </div>
+          <div class="testi-card testi-card--large">
+            <div class="testi-stars">★★★★★</div>
+            <blockquote>"Best barbershop experience in the city, full stop. The hot towel shave alone is worth it. This place is a proper sanctuary for men who take their grooming seriously."</blockquote>
+            <cite>— James K., Chelsea</cite>
+          </div>
+          <div class="testi-card">
+            <div class="testi-stars">★★★★★</div>
+            <blockquote>"My balayage is exactly what I showed them. They nailed it first time. Already booked my next appointment."</blockquote>
+            <cite>— Priya N., Shoreditch</cite>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- §7 BOOKING CTA ──────────────────────────────────────────── -->
+    <section id="booking" class="section section--booking">
+      <div class="booking__content">
+        <p class="eyebrow">Ready for your transformation?</p>
+        <h2 class="booking__title">Reserve your<br/><em>session today</em></h2>
+        <p class="booking__sub">Same-day appointments available. Join 3,000+ satisfied clients.</p>
+        <div class="booking__ctas">
+          <a href="#" class="btn-primary btn--xl magnetic">Book Online Now</a>
+          <a href="tel:+442012345678" class="booking__phone">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 014.69 9.5a19.79 19.79 0 01-3.07-8.67A2 2 0 013.6 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L7.91 9.6a16 16 0 006.29 6.29l.98-.98a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+            +44 (0)20 1234 5678
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- §8 FOOTER ──────────────────────────────────────────────── -->
+    <footer id="footer">
+      <div class="footer__top">
+        <div class="footer__brand">
+          <a class="logo logo--lg" href="#">LUXE<span>.</span></a>
+          <p>London's most refined salon<br/>and barbershop studio.</p>
+          <div class="footer__social">
+            <a href="#" class="social-btn">IG</a>
+            <a href="#" class="social-btn">FB</a>
+            <a href="#" class="social-btn">TK</a>
+          </div>
+        </div>
+        <div class="footer__links">
+          <div class="footer__col">
+            <h4>Services</h4>
+            <a href="#">Precision Cut</a>
+            <a href="#">Colour & Balayage</a>
+            <a href="#">Beard Sculpt</a>
+            <a href="#">Scalp Treatment</a>
+            <a href="#">VIP Package</a>
+          </div>
+          <div class="footer__col">
+            <h4>Studio</h4>
+            <a href="#">About Us</a>
+            <a href="#">Our Team</a>
+            <a href="#">Gallery</a>
+            <a href="#">Careers</a>
+            <a href="#">Gift Cards</a>
+          </div>
+          <div class="footer__col">
+            <h4>Visit Us</h4>
+            <p>123 King's Road<br/>Chelsea, London<br/>SW3 4PL</p>
+            <p class="footer__hours">Mon–Sat: 9am – 7pm<br/>Sunday: 10am – 5pm</p>
+          </div>
+        </div>
+      </div>
+      <div class="footer__bottom">
+        <p>&copy; 2025 LUXE Salon & Barbershop Ltd. All rights reserved.</p>
+        <p>Website by <a href="#" class="footer__agency">[Your Agency Name]</a></p>
+      </div>
+    </footer>
+
+  </div><!-- /scroll-wrapper -->
+
+  <!-- ── SCRIPTS ─────────────────────────────────────────────────── -->
+
+  <!-- Import map for Three.js ES modules -->
+  <script type="importmap">
+  {
+    "imports": {
+      "three": "https://unpkg.com/three@0.160.0/build/three.module.js",
+      "three/addons/": "https://unpkg.com/three@0.160.0/examples/jsm/"
+    }
+  }
+  </script>
+
+  <!-- GSAP + ScrollTrigger -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+
+  <!-- Lenis smooth scroll -->
+  <script src="https://unpkg.com/lenis@1.1.9/dist/lenis.min.js"></script>
+
+  <!-- Our app -->
+  <script type="module" src="js/main.js"></script>
+
+</body>
+</html>
